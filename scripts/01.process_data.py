@@ -1,7 +1,7 @@
 import argparse
+import logging as logger
 
 import yaml
-from loguru import logger
 from pyspark.sql import SparkSession
 
 from src.power_consumption.config import ProjectConfig
@@ -39,6 +39,8 @@ spark = SparkSession.builder.getOrCreate()
 df = spark.read.csv(
     f"/Volumes/{config.catalog_name}/{config.schema_name}/data/data.csv", header=True, inferSchema=True
 ).toPandas()
+
+logger.info(f"{df.shape[0]} rows and {df.shape[1]} columns loaded.")
 
 # Generate synthetic data
 ### This is mimicking a new data arrival. In real world, this would be a new batch of data.

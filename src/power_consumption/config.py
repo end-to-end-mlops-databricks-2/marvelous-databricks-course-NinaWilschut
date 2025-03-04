@@ -12,10 +12,7 @@ class ProjectConfig(BaseModel):
     parameters: Dict[str, Any]  # Dictionary to hold model-related parameters
     # parameters_a: Optional[Dict[str, Any]]
     # parameters_b: Optional[Dict[str, Any]]
-    # experiment_name_basic: Optional[str]
-    # experiment_name_custom: Optional[str]
-    # experiment_name_fe: Optional[str]
-    # pipeline_id: Optional[str]
+    # experiment_name: Optional[str]
 
     @classmethod
     def from_yaml(cls, config_path: str, env: str = None):
@@ -26,11 +23,11 @@ class ProjectConfig(BaseModel):
         if env is not None:
             config_dict["catalog_name"] = config_dict[env]["catalog_name"]
             config_dict["schema_name"] = config_dict[env]["schema_name"]
-            config_dict["pipeline_id"] = config_dict[env]["pipeline_id"]
+            # config_dict["pipeline_id"] = config_dict[env]["pipeline_id"]
         else:
             config_dict["catalog_name"] = config_dict["catalog_name"]
             config_dict["schema_name"] = config_dict["schema_name"]
-            config_dict["pipeline_id"] = config_dict["pipeline_id"]
+            # config_dict["pipeline_id"] = config_dict["pipeline_id"]
 
         return cls(**config_dict)
 
