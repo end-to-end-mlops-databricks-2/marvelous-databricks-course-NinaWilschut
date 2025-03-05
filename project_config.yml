@@ -14,6 +14,8 @@ dev:
   schema_name: ninawils
   pipeline_id: 0498db79-f551-49bb-ad4f-finac9d91fc
 
+experiment_name: /Shared/power-consumption-nina
+
 parameters:
   learning_rate: 0.01
   n_estimators: 1000

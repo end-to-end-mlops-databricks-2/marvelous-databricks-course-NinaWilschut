@@ -1,4 +1,4 @@
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 import yaml
 from pydantic import BaseModel
@@ -10,9 +10,7 @@ class ProjectConfig(BaseModel):
     catalog_name: str
     schema_name: str
     parameters: Dict[str, Any]  # Dictionary to hold model-related parameters
-    # parameters_a: Optional[Dict[str, Any]]
-    # parameters_b: Optional[Dict[str, Any]]
-    # experiment_name: Optional[str]
+    experiment_name: Optional[str]
 
     @classmethod
     def from_yaml(cls, config_path: str, env: str = None):
@@ -35,4 +33,4 @@ class ProjectConfig(BaseModel):
 class Tags(BaseModel):
     git_sha: str
     branch: str
-    job_run_id: str
+    # job_run_id: str
