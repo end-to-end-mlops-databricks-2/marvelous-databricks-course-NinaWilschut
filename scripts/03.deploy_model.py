@@ -5,7 +5,7 @@ from pyspark.dbutils import DBUtils
 from pyspark.sql import SparkSession
 
 from src.power_consumption.config import ProjectConfig
-from src.power_consumption.serving.model_serving import ModelServing
+from src.power_consumption.serving.fe_model_serving import FeatureLookupServing
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -38,13 +38,13 @@ logger.info("Loaded config file.")
 
 catalog_name = config.catalog_name
 schema_name = config.schema_name
-endpoint_name = f"power-consumption-model-serving-{args.env}"
+endpoint_name = f"power-consumption-model-serving-fe-{args.env}"
 
 # Initialize Feature Lookup Serving Manager
-model_server = ModelServing(
-    model_name="power_consumption_model",
+model_server = FeatureLookupServing(
+    model_name="power_consumption_model_fe",
     endpoint_name=endpoint_name,
-    table_name=f"{catalog_name}.{schema_name}.",
+    table_name=f"{catalog_name}.{schema_name}.power_consumption_features",
 )
 
 # Create the online table for house features

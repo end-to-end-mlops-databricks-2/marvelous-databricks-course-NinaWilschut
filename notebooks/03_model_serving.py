@@ -1,3 +1,11 @@
+# Databricks notebook source
+# MAGIC %pip install power_consumption-0.0.1-py3-none-any.whl
+
+
+# COMMAND ----------
+# MAGIC %restart_python
+
+# COMMAND ----------
 import os
 import time
 from pathlib import Path

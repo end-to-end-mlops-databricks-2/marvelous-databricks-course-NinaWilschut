@@ -15,6 +15,7 @@ dev:
   pipeline_id: 0498db79-f551-49bb-ad4f-finac9d91fc
 
 experiment_name: /Shared/power-consumption-nina
+experiment_name_fe: /Shared/power-consumption-nina-fe
 
 parameters:
   learning_rate: 0.01
