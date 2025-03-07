@@ -97,5 +97,4 @@ dmypy.json
 .history
 
 .databricks/
-.github/
 .ruff_cache/
