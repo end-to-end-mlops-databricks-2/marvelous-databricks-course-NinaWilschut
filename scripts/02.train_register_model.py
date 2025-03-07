@@ -85,7 +85,7 @@ logger.info("Features prepared.")
 # run_id = mlflow.search_runs(experiment_names=model.experiment_name, filter_string=f"tags.job_run_id = '{args.job_run_id}'").iloc[0].run_id
 # logger.info(f"Run ID: {run_id}")
 
-# model = mlflow.sklearn.load_model(f"runs:/{run_id}/lightgbm-pipeline-model")
+# loaded_model = mlflow.sklearn.load_model(f"runs:/{run_id}/lightgbm-pipeline-model")
 
 # # Retrieve dataset for the current run
 # model.retrieve_current_run_dataset()

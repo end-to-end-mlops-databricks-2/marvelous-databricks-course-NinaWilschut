@@ -24,16 +24,16 @@ variables:
 
 resources:
   jobs:
-    house-price:
-      name: house-price-workflow-test-demo
+    power-consumption-nina:
+      name: power-consumption-workflow-test-demo
       schedule:
         quartz_cron_expression: "0 0 6 ? * MON"
         timezone_id: "Europe/Amsterdam"
         pause_status: ${var.schedule_pause_status}
       tags:
-        project_name: "house-price"
+        project_name: "power-consumption"
       job_clusters:
-        - job_cluster_key: "house-price-cluster"
+        - job_cluster_key: "power-consumption-cluster"
           new_cluster:
             spark_version: "15.4.x-scala2.12"
             data_security_mode: "SINGLE_USER"
@@ -45,7 +45,7 @@ resources:
 
       tasks:
         - task_key: "preprocessing"
-          job_cluster_key: "house-price-cluster"
+          job_cluster_key: "power-consumption-cluster"
           spark_python_task:
             python_file: "scripts/01.process_data.py"
             parameters:
@@ -56,7 +56,7 @@ resources:
           libraries:
            - whl: ./dist/*.whl
         - task_key: "train_model"
-          job_cluster_key: "house-price-cluster"
+          job_cluster_key: "power-consumption-cluster"
           depends_on:
             - task_key: "preprocessing"
           spark_python_task:
@@ -85,7 +85,7 @@ resources:
           depends_on:
             - task_key: "model_updated"
               outcome: "true"
-          job_cluster_key: "house-price-cluster"
+          job_cluster_key: "power-consumption-cluster"
           spark_python_task:
             python_file: "scripts/03.deploy_model.py"
             parameters:

@@ -1,4 +1,5 @@
 import logging
+from pathlib import Path
 
 import pandas as pd
 import yaml
@@ -16,7 +17,8 @@ from src.power_consumption.config import ProjectConfig
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
-config = ProjectConfig.from_yaml(config_path="../project_config.yml")
+root = Path(__file__).parent.parent
+config = ProjectConfig.from_yaml(config_path=root / "project_config.yml")
 
 logger.info("Configuration loaded:")
 logger.info(yaml.dump(config, default_flow_style=False))
@@ -38,13 +40,11 @@ df = df.iloc[:, :-2]
 # Rename columns to convert spaces to underscores and make all lowercase
 df.columns = [col.lower().replace(" ", "_") for col in df.columns]
 
-print(df.head())
-
 # Handle numeric features
 num_features = config.num_features
 for col in num_features:
     if col == "datetime":
-        df[col] = pd.to_datetime(df[col], errors="coerce")
+        df[col] = pd.to_datetime(df[col], errors="coerce").astype("int64") / 10**9
     else:
         df[col] = pd.to_numeric(df[col], errors="coerce")
 

@@ -35,7 +35,7 @@ run_id = mlflow.search_runs(
     experiment_names=["/Shared/power-consumption-nina"], filter_string="tags.branch='week2'"
 ).run_id[0]
 
-model = mlflow.sklearn.load_model(f"runs:/{run_id}/lightgbm-pipeline-model")
+loaded_model = mlflow.sklearn.load_model(f"runs:/{run_id}/lightgbm-pipeline-model")
 
 
 # Retrieve dataset for the current run
@@ -53,6 +53,6 @@ model.register_model()
 
 test_set = spark.table(f"{config.catalog_name}.{config.schema_name}.test_set").limit(10)
 
-X_test = test_set.drop(config.target).toPandas()
+X_test = test_set.drop(config.target, "id", "update_timestamp_utc").toPandas()
 
 predictions_df = model.load_latest_model_and_predict(X_test)

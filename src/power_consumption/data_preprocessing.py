@@ -27,7 +27,10 @@ class DataProcessor:
         # Handle numeric features
         num_features = self.config.num_features
         for col in num_features:
-            self.df[col] = pd.to_numeric(self.df[col], errors="coerce")
+            if col != "datetime":
+                self.df[col] = pd.to_numeric(self.df[col], errors="coerce")
+            else:
+                self.df[col] = pd.to_datetime(self.df[col], errors="coerce").astype("int64") / 10**9
 
         # Add id column
         self.df["id"] = self.df.index
