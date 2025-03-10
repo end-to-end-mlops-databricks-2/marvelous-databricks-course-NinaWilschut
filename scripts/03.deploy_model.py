@@ -5,7 +5,7 @@ from pyspark.dbutils import DBUtils
 from pyspark.sql import SparkSession
 
 from src.power_consumption.config import ProjectConfig
-from src.power_consumption.serving.fe_model_serving import FeatureLookupServing
+from src.power_consumption.serving.model_serving import ModelServing
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -38,22 +38,14 @@ logger.info("Loaded config file.")
 
 catalog_name = config.catalog_name
 schema_name = config.schema_name
-endpoint_name = f"power-consumption-model-serving-fe-{args.env}"
+endpoint_name = f"power-consumption-model-serving-{args.env}"
 
-# Initialize Feature Lookup Serving Manager
-model_server = FeatureLookupServing(
-    model_name="power_consumption_model_fe",
+# Initialize model Serving Manager
+model_serving = ModelServing(
+    model_name=f"{config.catalog_name}.{config.schema_name}.power_consumption_model",
     endpoint_name=endpoint_name,
-    table_name=f"{catalog_name}.{schema_name}.power_consumption_features",
 )
 
-# Create the online table for house features
-# model_server.create_online_table()
-# logger.info("Created online table")
-
-model_server.update_online_table(config=config)
-logger.info("Updated online table")
-
-# Deploy the model serving endpoint with feature lookup
-model_server.deploy_or_update_serving_endpoint(version=model_version)
-logger.info("Started deployment/update of the serving endpoint")
+# Deploy the model serving endpoint
+model_serving.deploy_or_update_serving_endpoint()
+logger.info("Successfully deployed/updated the serving endpoint.")

@@ -320,6 +320,15 @@ wheels = [
 ]
 
 [[package]]
+name = "databricks"
+version = "0.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/a2/94/acee395ffab7057cb025a3d65e61bf686c09d1c00b41518a0a4de0c0f80d/databricks-0.2.tar.gz", hash = "sha256:f20074914eea742cdc5f0b60db18b2408c62d90b50013adf5614f00a2e042059", size = 734 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/97/71/3a1f0cb5f5e3060054a48c17281aaf3e75a52e31e602d5e5769f94c16624/databricks-0.2-py2.py3-none-any.whl", hash = "sha256:2d4384b4d1f992ac9c94b0933a61082a61ee6bae5e95a208d1e843216d860adf", size = 1244 },
+]
+
+[[package]]
 name = "databricks-connect"
 version = "15.4.6"
 source = { registry = "https://pypi.org/simple" }
@@ -1247,6 +1256,7 @@ source = { editable = "." }
 dependencies = [
     { name = "cffi" },
     { name = "cloudpickle" },
+    { name = "databricks" },
     { name = "databricks-feature-engineering" },
     { name = "databricks-feature-lookup" },
     { name = "databricks-sdk" },
@@ -1275,6 +1285,7 @@ dev = [
 requires-dist = [
     { name = "cffi", specifier = "==1.17.1" },
     { name = "cloudpickle", specifier = "==3.1.0" },
+    { name = "databricks", specifier = ">=0.2" },
     { name = "databricks-feature-engineering", specifier = "==0.6" },
     { name = "databricks-feature-lookup", specifier = "==1.2.0" },
     { name = "databricks-sdk", specifier = "==0.32.0" },
