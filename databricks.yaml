@@ -99,7 +99,7 @@ resources:
 targets:
 
   dev:
-    cluster_id: 0128-221909-4x44licl
+    cluster_id: 0310-095207-vnjxdvx1
     default: true
     mode: development
     workspace:

@@ -4,8 +4,8 @@ import logging as logger
 import yaml
 from pyspark.sql import SparkSession
 
-from src.power_consumption.config import ProjectConfig
-from src.power_consumption.data_processor import DataProcessor, generate_synthetic_data
+from power_consumption.config import ProjectConfig
+from power_consumption.data_processor import DataProcessor, generate_synthetic_data
 
 parser = argparse.ArgumentParser()
 parser.add_argument(

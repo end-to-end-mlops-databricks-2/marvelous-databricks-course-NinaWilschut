@@ -5,8 +5,8 @@ import mlflow
 from pyspark.dbutils import DBUtils
 from pyspark.sql import SparkSession
 
-from src.power_consumption.config import ProjectConfig, Tags
-from src.power_consumption.models.basic_model import BasicModel
+from power_consumption.config import ProjectConfig, Tags
+from power_consumption.models.basic_model import BasicModel
 
 # Configure tracking uri
 mlflow.set_tracking_uri("databricks")

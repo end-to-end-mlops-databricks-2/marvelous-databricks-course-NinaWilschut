@@ -17,7 +17,7 @@ import requests
 # from pyspark.dbutils import DBUtils
 from pyspark.sql import SparkSession
 
-from src.power_consumption.config import ProjectConfig, Tags
+from power_consumption.config import ProjectConfig, Tags
 
 # # spark session
 

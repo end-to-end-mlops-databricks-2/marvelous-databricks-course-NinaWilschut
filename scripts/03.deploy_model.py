@@ -4,8 +4,8 @@ from loguru import logger
 from pyspark.dbutils import DBUtils
 from pyspark.sql import SparkSession
 
-from src.power_consumption.config import ProjectConfig
-from src.power_consumption.serving.model_serving import ModelServing
+from power_consumption.config import ProjectConfig
+from power_consumption.serving.model_serving import ModelServing
 
 parser = argparse.ArgumentParser()
 parser.add_argument(

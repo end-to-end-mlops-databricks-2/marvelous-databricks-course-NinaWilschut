@@ -12,7 +12,7 @@ from pyspark.sql import functions as F
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.pipeline import Pipeline
 
-from src.power_consumption.config import ProjectConfig, Tags
+from power_consumption.config import ProjectConfig, Tags
 
 
 class FeatureLookUpModel:
