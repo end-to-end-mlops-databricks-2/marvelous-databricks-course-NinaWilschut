@@ -95,3 +95,6 @@ basic_model.retrieve_current_run_metadata()
 
 # Register model
 basic_model.register_model()
+
+# Set the model_updated flag to 1
+dbutils.jobs.taskValues.set(key="model_updated", value=1)

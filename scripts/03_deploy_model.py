@@ -1,6 +1,6 @@
 import argparse
+import logging as logger
 
-from loguru import logger
 from pyspark.dbutils import DBUtils
 from pyspark.sql import SparkSession
 
@@ -30,7 +30,6 @@ config_path = f"{root_path}/files/project_config.yml"
 
 spark = SparkSession.builder.getOrCreate()
 dbutils = DBUtils(spark)
-model_version = dbutils.jobs.taskValues.get(taskKey="train_model", key="model_version")
 
 # Load project config
 config = ProjectConfig.from_yaml(config_path=config_path, env=args.env)
