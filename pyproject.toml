@@ -21,6 +21,7 @@ dependencies = [
     "pydantic==2.9.2",
     "ucimlrepo>=0.0.7",
     "databricks>=0.2",
+    "pre-commit>=4.1.0, <5",
 ]
 
 [dependency-groups]
