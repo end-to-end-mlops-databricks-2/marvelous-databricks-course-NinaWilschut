@@ -1,0 +1,36 @@
+catalog_name: mlops_dev
+schema_name: ninawils
+
+prd:
+  catalog_name: mlops_prod
+  schema_name: ninawils
+  pipeline_id: 1818db79-f551-49bb-ad4f-f61cac9d91fc
+acc:
+  catalog_name: mlops_acc
+  schema_name: ninawils
+  pipeline_id: 94748db79-f551-49bb-ad4f-f61cac9d91fc
+dev:
+  catalog_name: mlops_dev
+  schema_name: ninawils
+  pipeline_id: 0498db79-f551-49bb-ad4f-finac9d91fc
+
+experiment_name: /Shared/power-consumption-nina
+experiment_name_fe: /Shared/power-consumption-nina-fe
+
+parameters:
+  learning_rate: 0.01
+  n_estimators: 1000
+  max_depth: 6
+
+num_features:
+  - datetime
+  - temperature
+  - humidity
+  - wind_speed
+  - general_diffuse_flows
+  - diffuse_flows
+
+target: zone_1_power_consumption
+  # - Zone 1 Power Consumption
+  # - Zone 2 Power Consumption
+  # - Zone 3 Power Consumption
